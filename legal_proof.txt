@@ -1,0 +1,3 @@
+
+
+The secondary data source, Wikipedia, explicitly permits data extraction provided that bot operators identify themselves. This project complies fully with the Wikimedia Foundation's User-Agent Policy by utilizing a descriptive, non-spoofed User-Agent header containing project details and contact information in the requests script:
