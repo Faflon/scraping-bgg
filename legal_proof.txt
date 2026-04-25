@@ -1,3 +1,12 @@
+Terms of Service of boardgamegeek.com: 
+Section 6.B.i of the BGG ToS permits automated systems provided they do not send requests faster than a human can reasonably produce (in robots.txt stated 5 second delay).
+
+Copy of section 6.b.i: Don't slam our servers with "robots" or "spiders". You shall not use or launch any automated system, including without limitation "robots," "spiders," or "offline readers," that accesses the Geek Websites in a manner that sends more request messages to the BoardGameGeek servers in a given period of time than a human can reasonably produce in the same period by using a conventional online web browser, except as expressly permitted by BoardGameGeek.
+
+ToS link: https://boardgamegeek.com/terms
+Robots.txt: https://boardgamegeek.com/robots.txt
+
+The site’s robots.txt leaves the core game directories (/browse/boardgame/, /boardgame/) open and dictates a Crawl-delay: 5.
 
 
-The secondary data source, Wikipedia, explicitly permits data extraction provided that bot operators identify themselves. This project complies fully with the Wikimedia Foundation's User-Agent Policy by utilizing a descriptive, non-spoofed User-Agent header containing project details and contact information in the requests script:
+The secondary data source, Wikipedia, explicitly permits data extraction provided that bot operators identify themselves. This project complies fully with the Wikimedia Foundation's User-Agent Policy by utilizing a descriptive, non-spoofed User-Agent header containing project details and contact information in the requests script: 'User-Agent': 'UniversityBoardGameProject/1.0 (my_email@student.edu) python-requests/2.31'

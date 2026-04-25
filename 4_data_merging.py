@@ -43,6 +43,9 @@ def merge_project_data():
     # Fill missing award statuses with 'None' instead of NaN
     final_df['Spiel_des_Jahres'] = final_df['Spiel_des_Jahres'].fillna('None')
     
+    if 'Year_Won' in final_df.columns:
+        final_df['Year_Won'] = final_df['Year_Won'].astype('Int64')
+    
     # Drop the temporary merging columns and redundant Wikipedia title column
     final_df.drop(['norm_Title_x', 'norm_Title_y'], axis=1, inplace=True)
 
