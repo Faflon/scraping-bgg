@@ -156,7 +156,7 @@ class BGGDeepSpider(scrapy.Spider):
 
         # 8. Description
         raw_description = response.xpath('//article[contains(@class, "game-description-body")]//text()').getall()
-        # Join with a space, ensuring we don't accidentally merge words together where tags used to be
+        # Join with a space, ensuring not accidentally merging words together where tags used to be
         description = " ".join([text.strip() for text in raw_description if text.strip()]) if raw_description else None
 
         yield {

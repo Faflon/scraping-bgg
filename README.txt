@@ -1,7 +1,7 @@
 ## Project Overview
 This project is an end-to-end data extraction and integration pipeline designed to compile a comprehensive dataset of board game metadata and historical award records. 
 
-Due to strict Bot Management systems (Cloudflare WAF) and dynamic frontend rendering (Angular) on the primary source target (BoardGameGeek), standard synchronous scraping methods were insufficient. This project implements a Hybrid Scraping Architecture, combining asynchronous request handling with automated headless browsing, supplemented by standard HTML parsing for secondary unprotected sources.
+Due to strict Bot Management systems on the primary source target (BoardGameGeek), standard synchronous scraping methods were insufficient. This project implements a Hybrid Scraping Architecture, combining asynchronous request handling with automated browsing, supplemented by standard HTML parsing for secondary unprotected sources.
 
 ## System Architecture
 The pipeline is divided into three distinct extraction phases and one integration phase:
@@ -11,8 +11,8 @@ The pipeline is divided into three distinct extraction phases and one integratio
    * Handles GDPR/Cookie consent overlays to expose the underlying DOM.
 2. **Phase 2 (2_games.py): Deep Metadata Extraction (Scrapy + Selenium Middleware)**
    * Custom `SeleniumMiddleware` injected into the Scrapy engine to bypass Cloudflare TLS fingerprinting.
-   * Utilizes an automatic session-reboot mechanism every 75 requests to prevent DOM bloat and memory leaks.
-   * Leverages `WebDriverWait` to ensure Angular JavaScript elements are fully populated before HTML extraction.
+   * Utilizes an automatic session-reboot mechanism every 75 requests to prevent memory leaks.
+   * Leverages `WebDriverWait` to ensure all elements are fully populated before HTML extraction.
 3. **Phase 3 (3_request.py): Award Enrichment (Requests + BeautifulSoup)**
    * A synchronous, lightweight scraper targeting Wikipedia to extract the historical list of *Spiel des Jahres* (Game of the Year) winners.
 4. **Phase 4 (4_data_merging.py): Data Integration**
