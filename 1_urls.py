@@ -59,14 +59,14 @@ def gather_bgg_urls(max_pages=10): #default 10 pages for testing
                     print("Bottom cookie banner not found.")
 
             # 3. Extract the DOM and hand it to BeautifulSoup
-            # We wait for the main table to be present before extracting
+            # Wait for the main table to be present before extracting
             WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.ID, "collectionitems"))
             )
             html_source = driver.page_source
             soup = BeautifulSoup(html_source, 'html.parser')
             
-            # 4. Parse the data (The exact logic we built earlier)
+            # 4. Parse the data
             rows = soup.find_all('tr', id=re.compile(r'^row_')) #no need for using regex here because all of the rows starts with id="row_", but still added for the purpose of the exercise
             print(f"Extracted {len(rows)} games from this page.")
             

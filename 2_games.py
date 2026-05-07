@@ -37,14 +37,14 @@ class SeleniumMiddleware:
         options.add_experimental_option('useAutomationExtension', False)
         
         self.driver = webdriver.Chrome(options=options)
-        # THE HANG FIX: If a page takes longer than 30 seconds to load, abort.
+        # If a page takes longer than 30 seconds to load, abort.
         self.driver.set_page_load_timeout(30) 
         self.first_page_loaded = False
 
     def process_request(self, request, spider):
         self.request_count += 1
         
-        # THE RAM FIX: Restart the browser periodically
+        # Restart the browser periodically
         if self.request_count % self.restart_threshold == 0:
             print(f"\n[SYSTEM] Reached {self.request_count} requests. Restarting browser to clear memory...\n")
             self._start_browser()
@@ -54,7 +54,7 @@ class SeleniumMiddleware:
         try:
             self.driver.get(request.url)
         except Exception as e:
-            # If the page hangs, we catch it here. 
+            # If the page hangs, catch it here. 
             # Returning a 500 status tells Scrapy's internal engine to Retry this URL later.
             print(f"Page load timeout or error. Flagging for Scrapy Retry.")
             return HtmlResponse(request.url, status=500, request=request)

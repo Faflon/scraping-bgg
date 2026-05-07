@@ -23,7 +23,7 @@ def merge_project_data():
 
     print("Merging BGG datasets...")
     # 1. Merge Phase 1 (Raw) and Phase 2 (Metadata)
-    # We use a left merge on the URL to ensure we keep all 1000 games even if metadata failed for a few
+    # Use a left merge on the URL to ensure keeping all 1000 games even if metadata failed for a few
     bgg_df = pd.merge(raw_df, meta_df, left_on='URL', right_on='url', how='left')
     
     # Drop the duplicate 'url' column coming from the metadata dataframe
